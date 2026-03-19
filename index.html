@@ -492,6 +492,8 @@
     .page { display: block; min-height: auto; }
     .main { display: block; padding: 18px 24px 20px; }
     .mode-card, .comparison { break-inside: auto; box-shadow: none; }
+    /* Keep “模式二 / Model Two” starting on page 2 (stable layout). */
+    .mode-card.mode-2 { break-before: page; page-break-before: always; }
     .comparison { page-break-inside: auto; }
     .lang-toggle { display: none; }
   }
