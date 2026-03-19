@@ -318,6 +318,9 @@
     text-align: center;
     flex: 1;
     line-height: 1.4;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .step-num {
     font-size: 10px;
@@ -468,6 +471,9 @@
   }
   @media (max-width: 640px) {
     .header-badges { display: none; }
+    .flow { flex-wrap: wrap; gap: 8px; }
+    .flow-arrow { display: none; }
+    .flow-step { flex: 1 1 calc(50% - 8px); }
     .cmp-grid { grid-template-columns: 1fr; }
     .cmp-cell.hdr.dim { display: none; }
     .cmp-cell.label { font-weight: 700; color: var(--text-secondary); padding-top: 14px; }
