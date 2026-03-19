@@ -337,7 +337,10 @@
   @media print {
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     body { overflow: visible; }
-    .mode-card, .comparison { break-inside: avoid; page-break-inside: avoid; box-shadow: none; }
+    /* Avoid pushing whole cards to next page (can leave page 1 header-only). */
+    .page { display: block; min-height: auto; }
+    .main { display: block; padding: 16px 24px 20px; }
+    .mode-card, .comparison { break-inside: auto; page-break-inside: auto; box-shadow: none; }
     .header, .footer { position: static; }
   }
 </style>

@@ -487,7 +487,12 @@
   /* ── PRINT ── */
   @media print {
     body { background: #0C0C0C; color: #AAAAAA; }
-    .mode-card, .comparison { break-inside: avoid; box-shadow: none; }
+    /* In Chrome print/PDF, "avoid" can push whole cards to next page,
+       leaving page 1 with only the header. Allow breaking inside cards. */
+    .page { display: block; min-height: auto; }
+    .main { display: block; padding: 18px 24px 20px; }
+    .mode-card, .comparison { break-inside: auto; box-shadow: none; }
+    .comparison { page-break-inside: auto; }
     .lang-toggle { display: none; }
   }
 </style>
