@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NVT Bundle — RWA Financing Platform Solutions</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, 'Helvetica Neue', sans-serif;
+    background: #0C0C0C;
+    color: #AAAAAA;
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    font-size: clamp(16px, 1.1vw, 18px);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #0C0C0C;
+    border-bottom: 1px solid #2A2A2A;
+    padding: 28px clamp(20px, 2.2vw, 40px) 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(14px, 1.4vw, 22px);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,160,77,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #D4A04D;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  h1 {
+    font-size: clamp(34px, 3.2vw, 46px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  h1 span {
+    background: linear-gradient(135deg, #E8C88A, #D4A04D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .tagline {
+    margin-top: 5px;
+    font-size: clamp(14px, 1.15vw, 16px);
+    color: #767676;
+    max-width: 68ch;
+  }
+  .header-badges { display: flex; gap: 14px; }
+  .badge {
+    background: #1C1C1C;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 10px 22px;
+    text-align: center;
+  }
+  .badge-label { font-size: 10px; color: #666666; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .badge-value { font-size: 17px; font-weight: 700; color: #E0B56A; }
+
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    padding: 22px clamp(20px, 2.2vw, 40px) 26px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: clamp(16px, 1.6vw, 26px);
+    overflow: visible;
+  }
+
+  /* ── MODE CARD ── */
+  .mode-card {
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .mode-header {
+    padding: 18px 20px 14px;
+    flex-shrink: 0;
+  }
+  .mode-1 .mode-header {
+    border-bottom: 1px solid #3D2E15;
+    background: linear-gradient(135deg, rgba(212,160,77,0.08) 0%, transparent 100%);
+  }
+  .mode-2 .mode-header {
+    border-bottom: 1px solid #15332A;
+    background: linear-gradient(135deg, rgba(77,168,138,0.08) 0%, transparent 100%);
+  }
+  .mode-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .mode-1 .mode-tag { background: #3D2E15; color: #E0B56A; }
+  .mode-2 .mode-tag { background: #15332A; color: #6BBFA4; }
+  .mode-title { font-size: clamp(18px, 1.55vw, 22px); font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .mode-subtitle { font-size: clamp(14px, 1.2vw, 16px); color: #8F8F8F; line-height: 1.8; font-weight: 600; text-shadow: 0 1px 0 rgba(0,0,0,0.6); }
+
+  .mode-body {
+    padding: 16px 20px 18px;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 7px;
+    margin-top: 12px;
+    flex-shrink: 0;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── SERVICE ITEMS ── */
+  .service-list { display: flex; flex-direction: column; gap: 5px; }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #181818;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .svc-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .mode-1 .svc-icon { background: #3D2E15; }
+  .mode-2 .svc-icon { background: #15332A; }
+  .svc-name { font-size: clamp(14px, 1.05vw, 16px); font-weight: 600; color: #FFFFFF; margin-bottom: 3px; }
+  .svc-desc { font-size: clamp(13px, 1.0vw, 15px); color: #767676; line-height: 1.65; text-shadow: 0 1px 0 rgba(0,0,0,0.55); }
+
+  /* ── FLOW ── */
+  .flow { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+  .flow-step {
+    background: #181818;
+    border: 1px solid #222222;
+    border-radius: 7px;
+    padding: 6px 8px;
+    font-size: 13px;
+    color: #AAAAAA;
+    text-align: center;
+    flex: 1;
+    line-height: 1.35;
+  }
+  .step-num { font-size: 9px; color: #D4A04D; font-weight: 700; }
+  .flow-arrow { color: #444444; font-size: 14px; flex-shrink: 0; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: #222222; margin: 10px 0; flex-shrink: 0; }
+
+  /* ── PRICING TABLE ── */
+  .pricing-table { width: 100%; border-collapse: collapse; }
+  .pricing-table tr { border-bottom: 1px solid #222222; }
+  .pricing-table tr:last-child { border-bottom: none; }
+  .pricing-table td { padding: 7px 3px; font-size: 13px; vertical-align: middle; }
+  .pt-icon { width: 24px; font-size: 13px; text-align: center; padding-right: 6px; }
+  .pt-label { color: #AAAAAA; }
+  .pt-value { color: #fff; font-weight: 600; text-align: right; white-space: nowrap; }
+  .mode-1 .pt-value { color: #E0B56A; }
+  .mode-2 .pt-value { color: #6BBFA4; }
+  .pt-sub { font-size: 11px; color: #5A5A5A; display: block; margin-top: 2px; }
+
+  .pricing-note {
+    font-size: 13px;
+    color: #767676;
+    margin-top: 8px;
+    line-height: 1.65;
+    padding: 10px 12px;
+    background: #181818;
+    border-radius: 7px;
+    border-left: 3px solid #2A2A2A;
+    flex-shrink: 0;
+  }
+
+  /* ── COMPARISON ── */
+  .comparison {
+    grid-column: 1 / -1;
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .cmp-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #AAAAAA;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .cmp-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr;
+    flex: 1;
+  }
+  .cmp-cell {
+    padding: 7px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid #1C1C1C;
+    display: flex;
+    align-items: center;
+  }
+  .cmp-cell.label { color: #767676; font-size: 11.5px; }
+  .cmp-cell.hdr {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #2A2A2A;
+    padding-bottom: 8px;
+    align-items: flex-end;
+  }
+  .cmp-cell.hdr.dim { color: #444444; }
+  .cmp-cell.hdr.blue { color: #E0B56A; background: rgba(212,160,77,0.06); border-radius: 7px 7px 0 0; }
+  .cmp-cell.hdr.green { color: #6BBFA4; background: rgba(77,168,138,0.06); border-radius: 7px 7px 0 0; }
+  .cmp-cell.blue-bg { background: rgba(212,160,77,0.04); color: #E8C88A; }
+  .cmp-cell.green-bg { background: rgba(77,168,138,0.04); color: #8AD4BA; }
+  .cmp-cell.last { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #0C0C0C;
+    border-top: 1px solid #2A2A2A;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 12px;
+  }
+  .footer-brand { font-size: 16px; font-weight: 700; color: #D4A04D; }
+  .footer-tagline { font-size: 10px; color: #444444; margin-top: 2px; }
+  .footer-contact { font-size: 11px; color: #767676; text-align: right; line-height: 1.7; }
+  .footer-contact a { color: #E0B56A; text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 980px) {
+    .page { max-width: 980px; }
+    .main { grid-template-columns: 1fr; }
+    .header { padding: 24px 18px 18px; }
+    .main { padding: 18px 18px 22px; }
+    .footer { padding: 16px 18px; flex-direction: column; align-items: flex-start; }
+    .footer-contact { text-align: left; }
+  }
+
+  @media (max-width: 640px) {
+    .header-badges { display: none; }
+    .flow { flex-wrap: wrap; gap: 8px; }
+    .flow-arrow { display: none; }
+    .flow-step { flex: 1 1 calc(50% - 8px); }
+    .comparison { padding: 14px 14px; }
+    .cmp-grid { grid-template-columns: 1fr; }
+    .cmp-cell.hdr.dim { display: none; }
+    .cmp-cell.label { font-weight: 700; padding-top: 12px; }
+    .cmp-cell.hdr.blue, .cmp-cell.hdr.green { border-radius: 8px; margin-bottom: 2px; }
+  }
+
+  /* ── PRINT (PDF) ── */
+  @media print {
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { overflow: visible; }
+    .mode-card, .comparison { break-inside: avoid; page-break-inside: avoid; box-shadow: none; }
+    .header, .footer { position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="brand">NVT · Product &amp; Services</div>
+    <h1>NVT <span>Bundle</span></h1>
+    <div class="tagline">End-to-End RWA Financing Platform Solutions &nbsp;·&nbsp; Two Engagement Models to Fit Every Institution</div>
+  </div>
+  <div class="header-badges">
+    <div class="badge">
+      <div class="badge-label">Core Platform</div>
+      <div class="badge-value">🏗️ RWA Tokenisation</div>
+    </div>
+    <div class="badge">
+      <div class="badge-label">Secondary Market</div>
+      <div class="badge-value">📊 Reservoir</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- MODE 1 -->
+  <div class="mode-card mode-1">
+    <div class="mode-header">
+      <div class="mode-tag">Model One</div>
+      <div class="mode-title">Code Transfer · Self-Operated</div>
+      <div class="mode-subtitle">NVT delivers the full platform codebase. The client takes complete technical ownership and operates independently, with NVT providing advisory support for the inaugural issuance.</div>
+    </div>
+    <div class="mode-body">
+      <div class="section-label">📦 Deliverables</div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="svc-icon">🔗</div>
+          <div><div class="svc-name">RWA Tokenisation System</div><div class="svc-desc">Full source code transfer covering on-chain asset registration, token issuance, and rights management modules</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">📈</div>
+          <div><div class="svc-name">Reservoir Secondary Market</div><div class="svc-desc">Tokenised asset trading platform with order matching and settlement interfaces</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🎯</div>
+          <div><div class="svc-name">Inaugural Issuance Advisory</div><div class="svc-desc">Structuring, compliance guidance, and end-to-end process support for the client's first RWA asset launch</div></div>
+        </div>
+      </div>
+
+      <div class="section-label">🔄 Engagement Flow</div>
+      <div class="flow">
+        <div class="flow-step"><div class="step-num">01</div>Code<br/>Transfer</div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="step-num">02</div>Advisory for<br/>1st Issuance</div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="step-num">03</div>Client<br/>Self-Operates</div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="step-num">04</div>NVT Earns<br/>Revenue Share</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">💰 Fee Structure (Reference Pricing)</div>
+      <table class="pricing-table">
+        <tr>
+          <td class="pt-icon">📦</td>
+          <td class="pt-label">Code Transfer Fee</td>
+          <td class="pt-value">HKD 10M<span class="pt-sub">List price HKD 12M, negotiable</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">🎯</td>
+          <td class="pt-label">Advisory Fee</td>
+          <td class="pt-value">HKD 3M<span class="pt-sub">Discounted to approx. HKD 2M</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📊</td>
+          <td class="pt-label">Platform Revenue Share</td>
+          <td class="pt-value">10%</td>
+        </tr>
+      </table>
+      <div class="pricing-note">
+        ✦ The code transfer fee is a one-time buyout; the client acquires full technical ownership.<br/>
+        ✦ Actual pricing is subject to adjustment based on client scale and requirements.
+      </div>
+    </div>
+  </div>
+
+  <!-- MODE 2 -->
+  <div class="mode-card mode-2">
+    <div class="mode-header">
+      <div class="mode-tag">Model Two</div>
+      <div class="mode-title">Platform Deployment · Managed Operations</div>
+      <div class="mode-subtitle">NVT deploys the platform and provides ongoing operational support. The client focuses on business development while NVT manages all back-office functions.</div>
+    </div>
+    <div class="mode-body">
+      <div class="section-label">🛠️ Services Included</div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="svc-icon">🏗️</div>
+          <div><div class="svc-name">Customised Platform Deployment</div><div class="svc-desc">Full environment setup, configuration, and go-live of the RWA financing platform, including tokenisation system and Reservoir market</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🔄</div>
+          <div><div class="svc-name">Token Lifecycle Management</div><div class="svc-desc">End-to-end on-chain management covering issuance, lock-up periods, dividend / interest distributions, and redemption at maturity</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">⚖️</div>
+          <div><div class="svc-name">Secondary Market Clearing &amp; Settlement</div><div class="svc-desc">Trade clearing, settlement processing, and fund transfer coordination for Reservoir market transactions</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">📋</div>
+          <div><div class="svc-name">Reconciliation &amp; Reporting</div><div class="svc-desc">On-chain / off-chain data reconciliation, transaction ledger maintenance, and periodic financial report generation</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🛡️</div>
+          <div><div class="svc-name">Compliance &amp; Regulatory Support</div><div class="svc-desc">Regulatory report preparation, KYC/AML data maintenance, and disclosure management</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">👥</div>
+          <div><div class="svc-name">Investor Services</div><div class="svc-desc">Investor query handling, holding confirmations, announcements, and information disclosure management</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">⚙️</div>
+          <div><div class="svc-name">Platform Technical Maintenance</div><div class="svc-desc">System upgrades, security patches, performance monitoring, and incident response under SLA</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">💰 Fee Structure (Indicative Pricing)</div>
+      <table class="pricing-table">
+        <tr>
+          <td class="pt-icon">🔑</td>
+          <td class="pt-label">Perpetual Licence Fee</td>
+          <td class="pt-value">HKD 12M<span class="pt-sub">List price, negotiable to HKD 10M</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">🚀</td>
+          <td class="pt-label">Onboarding Fee</td>
+          <td class="pt-value">HKD 1.5M – 2M</td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📅</td>
+          <td class="pt-label">Annual Support Fee</td>
+          <td class="pt-value">HKD 1M – 1.5M / year</td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📊</td>
+          <td class="pt-label">Platform Revenue Share</td>
+          <td class="pt-value">20% (vs. Annual Fee, higher applies)</td>
+        </tr>
+      </table>
+      <div class="pricing-note">
+        ✦ The Annual Support Fee and 20% revenue share are charged on a <strong style="color:#6BBFA4;">whichever is higher</strong> basis.<br/>
+        ✦ The Perpetual Licence Fee is a one-time payment granting indefinite platform usage rights.
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="comparison">
+    <div class="cmp-title">▸ Side-by-Side Comparison</div>
+    <div class="cmp-grid">
+      <div class="cmp-cell hdr dim">Dimension</div>
+      <div class="cmp-cell hdr blue">Model One · Code Transfer</div>
+      <div class="cmp-cell hdr green">Model Two · Managed Operations</div>
+
+      <div class="cmp-cell label">Technology Ownership</div>
+      <div class="cmp-cell blue-bg">Client holds full ownership</div>
+      <div class="cmp-cell green-bg">Licensed use via NVT</div>
+
+      <div class="cmp-cell label">Operational Responsibility</div>
+      <div class="cmp-cell blue-bg">Client self-operates</div>
+      <div class="cmp-cell green-bg">Fully managed by NVT</div>
+
+      <div class="cmp-cell label">Upfront Investment</div>
+      <div class="cmp-cell blue-bg">Code fee + advisory fee</div>
+      <div class="cmp-cell green-bg">Licence fee + onboarding fee</div>
+
+      <div class="cmp-cell label">Ongoing Costs</div>
+      <div class="cmp-cell blue-bg">Revenue share only (10%)</div>
+      <div class="cmp-cell green-bg">Annual fee + revenue share 20% (higher)</div>
+
+      <div class="cmp-cell label last">Best Suited For</div>
+      <div class="cmp-cell blue-bg last">Institutions with in-house tech teams seeking full platform control</div>
+      <div class="cmp-cell green-bg last">Business-focused clients preferring to outsource back-office operations</div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">NVT</div>
+    <div class="footer-tagline">Next Vision Technology · RWA Infrastructure Provider</div>
+  </div>
+  <div class="footer-contact">
+    For business enquiries, please contact the NVT team &nbsp;·&nbsp; <a href="#">business@nvt.io</a>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

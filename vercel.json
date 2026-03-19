@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/en", "destination": "/index.html?lang=en" },
+    { "source": "/zh", "destination": "/index.html?lang=zh" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    }
+  ]
+}

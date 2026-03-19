@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NVT Bundle — RWA Financing Platform Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --gold-500: #D4A04D;
+    --gold-400: #E0B56A;
+    --gold-300: #E8C88A;
+    --gold-200: #3D2E15;
+    --gold-100: #2A1F0E;
+    --gold-50:  #1A1508;
+    --teal-500: #4DA88A;
+    --teal-400: #6BBFA4;
+    --teal-300: #8AD4BA;
+    --teal-200: #15332A;
+    --teal-100: #0E2A20;
+    --teal-50:  #091A14;
+    --bg-body:  #0C0C0C;
+    --bg-card:  #141414;
+    --bg-elevated: #1C1C1C;
+    --bg-surface: #181818;
+    --border:   #2A2A2A;
+    --border-subtle: #222222;
+    --text-primary: #FFFFFF;
+    --text-secondary: #AAAAAA;
+    --text-muted: #666666;
+    --text-dim: #444444;
+    --text-small: #8F8F8F;
+    --text-faint: #767676;
+    --white:    #FFFFFF;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-lg: 0 10px 24px rgba(0,0,0,0.6);
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-body);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg-body);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 48px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    min-height: 130px;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -8%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212,160,77,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-left { position: relative; z-index: 1; }
+  .brand {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold-500);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  h1 span {
+    background: linear-gradient(135deg, #E8C88A, #D4A04D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .tagline {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-faint);
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-badges { display: flex; gap: 12px; }
+  .badge {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  .badge-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .badge-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold-400);
+  }
+
+  /* ── LANG TOGGLE ── */
+  .lang-toggle {
+    display: flex;
+    background: var(--bg-elevated);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .lang-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+  }
+  .lang-btn.active {
+    background: var(--gold-500);
+    color: #0C0C0C;
+    border-radius: 6px;
+  }
+  .lang-btn:hover:not(.active) {
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    padding: 28px 48px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+  }
+
+  /* ── MODE CARD ── */
+  .mode-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .mode-card:hover {
+    box-shadow: var(--shadow-lg);
+  }
+  .mode-1:hover { border-color: rgba(212,160,77,0.3); }
+  .mode-2:hover { border-color: rgba(77,168,138,0.3); }
+
+  .mode-header {
+    padding: 20px 24px 16px;
+    flex-shrink: 0;
+  }
+  .mode-1 .mode-header {
+    border-bottom: 1px solid var(--gold-200);
+    background: linear-gradient(135deg, rgba(212,160,77,0.08) 0%, transparent 100%);
+  }
+  .mode-2 .mode-header {
+    border-bottom: 1px solid var(--teal-200);
+    background: linear-gradient(135deg, rgba(77,168,138,0.08) 0%, transparent 100%);
+  }
+
+  .mode-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .mode-1 .mode-tag { background: var(--gold-200); color: var(--gold-400); }
+  .mode-2 .mode-tag { background: var(--teal-200); color: var(--teal-400); }
+
+  .mode-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .mode-subtitle {
+    font-size: 14px;
+    color: var(--text-small);
+    line-height: 1.65;
+    font-weight: 500;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+  }
+
+  .mode-body {
+    padding: 20px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    margin-top: 16px;
+    flex-shrink: 0;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── SERVICE ITEMS ── */
+  .service-list { display: flex; flex-direction: column; gap: 6px; }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .service-item:hover {
+    background: var(--bg-elevated);
+    border-color: var(--border);
+  }
+  .svc-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .mode-1 .svc-icon { background: var(--gold-200); }
+  .mode-2 .svc-icon { background: var(--teal-200); }
+  .svc-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .svc-desc {
+    font-size: 13px;
+    color: var(--text-faint);
+    line-height: 1.55;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.55);
+  }
+
+  /* ── FLOW ── */
+  .flow { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .flow-step {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: center;
+    flex: 1;
+    line-height: 1.4;
+  }
+  .step-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold-500);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .flow-arrow { color: var(--text-dim); font-size: 18px; flex-shrink: 0; font-weight: 600; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border-subtle); margin: 16px 0; flex-shrink: 0; }
+
+  /* ── PRICING TABLE ── */
+  .pricing-table { width: 100%; border-collapse: collapse; }
+  .pricing-table tr { border-bottom: 1px solid var(--border-subtle); }
+  .pricing-table tr:last-child { border-bottom: none; }
+  .pricing-table td { padding: 10px 4px; font-size: 14px; vertical-align: middle; }
+  .pt-icon { width: 28px; font-size: 14px; text-align: center; padding-right: 8px; }
+  .pt-label { color: var(--text-secondary); }
+  .pt-value { font-weight: 600; text-align: right; white-space: nowrap; }
+  .mode-1 .pt-value { color: var(--gold-400); }
+  .mode-2 .pt-value { color: var(--teal-400); }
+  .pt-sub { font-size: 11px; color: var(--text-dim); display: block; margin-top: 2px; }
+
+  .pricing-note {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    margin-top: 12px;
+    line-height: 1.65;
+    padding: 10px 14px;
+    background: var(--bg-surface);
+    border-radius: 8px;
+    border-left: 3px solid var(--border);
+    flex-shrink: 0;
+  }
+  .mode-2 .pricing-note .hl { color: var(--teal-400); font-weight: 600; }
+
+  /* ── COMPARISON ── */
+  .comparison {
+    grid-column: 1 / -1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .cmp-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .cmp-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr;
+  }
+  .cmp-cell {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+  }
+  .cmp-cell.label {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .cmp-cell.hdr {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    align-items: flex-end;
+  }
+  .cmp-cell.hdr.dim { color: var(--text-dim); }
+  .cmp-cell.hdr.blue {
+    color: var(--gold-400);
+    background: rgba(212,160,77,0.06);
+    border-radius: 8px 8px 0 0;
+    border-bottom-color: var(--gold-200);
+  }
+  .cmp-cell.hdr.green {
+    color: var(--teal-400);
+    background: rgba(77,168,138,0.06);
+    border-radius: 8px 8px 0 0;
+    border-bottom-color: var(--teal-200);
+  }
+  .cmp-cell.blue-bg { background: rgba(212,160,77,0.04); color: var(--gold-300); }
+  .cmp-cell.green-bg { background: rgba(77,168,138,0.04); color: var(--teal-300); }
+  .cmp-cell.last { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--bg-body);
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--gold-500);
+    letter-spacing: -0.02em;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .footer-contact {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.7;
+  }
+  .footer-contact a {
+    color: var(--gold-400);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer-contact a:hover { text-decoration: underline; color: var(--gold-300); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1200px) {
+    .main { padding: 24px 24px 16px; gap: 16px; }
+    .header { padding: 24px 24px 20px; }
+    .footer { padding: 16px 24px; }
+  }
+  @media (max-width: 960px) {
+    .main { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+    .comparison { grid-column: 1; }
+    .header { flex-direction: column; align-items: flex-start; gap: 16px; min-height: auto; }
+    .header-right { width: 100%; justify-content: space-between; }
+    .tagline { white-space: normal; }
+  }
+  @media (max-width: 640px) {
+    .header-badges { display: none; }
+    .cmp-grid { grid-template-columns: 1fr; }
+    .cmp-cell.hdr.dim { display: none; }
+    .cmp-cell.label { font-weight: 700; color: var(--text-secondary); padding-top: 14px; }
+    .cmp-cell.hdr.blue, .cmp-cell.hdr.green { border-radius: 8px; margin-bottom: 2px; }
+    h1 { font-size: 28px; }
+    .main { padding: 16px; gap: 16px; }
+    .header { padding: 20px 16px; }
+    .footer { padding: 16px; flex-direction: column; gap: 12px; text-align: center; }
+    .footer-contact { text-align: center; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #0C0C0C; color: #AAAAAA; }
+    .mode-card, .comparison { break-inside: avoid; box-shadow: none; }
+    .lang-toggle { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="brand">NVT · Product &amp; Services</div>
+    <h1>NVT <span>Bundle</span></h1>
+    <div class="tagline">
+      <span data-zh>端到端 RWA 融资平台解决方案 · 两种合作模式，灵活适配不同机构需求</span>
+      <span data-en style="display:none">End-to-End RWA Financing Platform Solutions · Two Engagement Models to Fit Every Institution</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-badges">
+      <div class="badge">
+        <div class="badge-label">
+          <span data-zh>核心平台</span><span data-en style="display:none">Core Platform</span>
+        </div>
+        <div class="badge-value">🏗️ RWA <span data-zh>代币化</span><span data-en style="display:none">Tokenisation</span></div>
+      </div>
+      <div class="badge">
+        <div class="badge-label">
+          <span data-zh>交易市场</span><span data-en style="display:none">Secondary Market</span>
+        </div>
+        <div class="badge-value">📊 Reservoir</div>
+      </div>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中文</button>
+      <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- MODE 1 -->
+  <div class="mode-card mode-1">
+    <div class="mode-header">
+      <div class="mode-tag">
+        <span data-zh>模式一</span><span data-en style="display:none">Model One</span>
+      </div>
+      <div class="mode-title">
+        <span data-zh>代码移交 · 自主运营</span>
+        <span data-en style="display:none">Code Transfer · Self-Operated</span>
+      </div>
+      <div class="mode-subtitle">
+        <span data-zh>NVT 交付完整平台代码，客户取得技术所有权后独立运营；NVT 在首次发行提供咨询陪跑。</span>
+        <span data-en style="display:none">NVT delivers the full platform codebase. The client takes complete technical ownership and operates independently, with NVT providing advisory support for the inaugural issuance.</span>
+      </div>
+    </div>
+    <div class="mode-body">
+      <div class="section-label">
+        📦 <span data-zh>交付内容</span><span data-en style="display:none">Deliverables</span>
+      </div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="svc-icon">🔗</div>
+          <div>
+            <div class="svc-name"><span data-zh>RWA 代币化系统</span><span data-en style="display:none">RWA Tokenisation System</span></div>
+            <div class="svc-desc"><span data-zh>完整源代码移交，含资产上链、代币发行、权益管理模块</span><span data-en style="display:none">Full source code transfer covering on-chain asset registration, token issuance, and rights management modules</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">📈</div>
+          <div>
+            <div class="svc-name"><span data-zh>Reservoir 二级交易市场</span><span data-en style="display:none">Reservoir Secondary Market</span></div>
+            <div class="svc-desc"><span data-zh>代币化资产流通交易平台，含订单撮合与结算接口</span><span data-en style="display:none">Tokenised asset trading platform with order matching and settlement interfaces</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🎯</div>
+          <div>
+            <div class="svc-name"><span data-zh>首次发行咨询服务</span><span data-en style="display:none">Inaugural Issuance Advisory</span></div>
+            <div class="svc-desc"><span data-zh>结构设计、合规建议、发行流程辅导，覆盖首个 RWA 资产上线全程</span><span data-en style="display:none">Structuring, compliance guidance, and end-to-end process support for the client's first RWA asset launch</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label">
+        🔄 <span data-zh>合作流程</span><span data-en style="display:none">Engagement Flow</span>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-num">01</div>
+          <span data-zh>代码移交</span><span data-en style="display:none">Code Transfer</span>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">02</div>
+          <span data-zh>首次发行<br/>咨询陪跑</span><span data-en style="display:none">Advisory for<br/>1st Issuance</span>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">03</div>
+          <span data-zh>客户<br/>独立运营</span><span data-en style="display:none">Client<br/>Self-Operates</span>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <div class="step-num">04</div>
+          <span data-zh>NVT<br/>收取分成</span><span data-en style="display:none">NVT Earns<br/>Revenue Share</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">
+        💰 <span data-zh>收费结构（参考定价）</span><span data-en style="display:none">Fee Structure (Reference Pricing)</span>
+      </div>
+      <table class="pricing-table">
+        <tr>
+          <td class="pt-icon">📦</td>
+          <td class="pt-label"><span data-zh>代码移交费</span><span data-en style="display:none">Code Transfer Fee</span></td>
+          <td class="pt-value">HKD <span data-zh>1,000 万</span><span data-en style="display:none">10M</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">🎯</td>
+          <td class="pt-label"><span data-zh>咨询服务费</span><span data-en style="display:none">Advisory Fee</span></td>
+          <td class="pt-value">HKD <span data-zh>300 万</span><span data-en style="display:none">3M</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📊</td>
+          <td class="pt-label"><span data-zh>平台收入分成</span><span data-en style="display:none">Platform Revenue Share</span></td>
+          <td class="pt-value">10%</td>
+        </tr>
+      </table>
+      <div class="pricing-note">
+        <span data-zh>✦ 代码移交费为一次性买断，客户取得完整技术所有权。<br/>✦ 实际报价视客户规模与需求调整。</span>
+        <span data-en style="display:none">✦ The code transfer fee is a one-time buyout; the client acquires full technical ownership.<br/>✦ Actual pricing is subject to adjustment based on client scale and requirements.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODE 2 -->
+  <div class="mode-card mode-2">
+    <div class="mode-header">
+      <div class="mode-tag">
+        <span data-zh>模式二</span><span data-en style="display:none">Model Two</span>
+      </div>
+      <div class="mode-title">
+        <span data-zh>平台部署 · 持续运营支持</span>
+        <span data-en style="display:none">Platform Deployment · Managed Operations</span>
+      </div>
+      <div class="mode-subtitle">
+        <span data-zh>NVT 负责平台部署并提供长期运营服务，客户专注业务拓展，后台运营全权委托 NVT 处理。</span>
+        <span data-en style="display:none">NVT deploys the platform and provides ongoing operational support. The client focuses on business development while NVT manages all back-office functions.</span>
+      </div>
+    </div>
+    <div class="mode-body">
+      <div class="section-label">
+        🛠️ <span data-zh>服务内容</span><span data-en style="display:none">Services Included</span>
+      </div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="svc-icon">🏗️</div>
+          <div>
+            <div class="svc-name"><span data-zh>平台定制化部署</span><span data-en style="display:none">Customised Platform Deployment</span></div>
+            <div class="svc-desc"><span data-zh>完整 RWA 融资平台的环境搭建、配置与上线，含代币化系统及 Reservoir 市场</span><span data-en style="display:none">Full environment setup, configuration, and go-live of the RWA financing platform, including tokenisation system and Reservoir market</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🔄</div>
+          <div>
+            <div class="svc-name"><span data-zh>代币生命周期管理</span><span data-en style="display:none">Token Lifecycle Management</span></div>
+            <div class="svc-desc"><span data-zh>发行、锁定期管理、分红 / 利息分配、到期赎回的全流程链上维护</span><span data-en style="display:none">End-to-end on-chain management covering issuance, lock-up periods, dividend / interest distributions, and redemption at maturity</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">⚖️</div>
+          <div>
+            <div class="svc-name"><span data-zh>二级市场清结算</span><span data-en style="display:none">Secondary Market Clearing &amp; Settlement</span></div>
+            <div class="svc-desc"><span data-zh>Reservoir 市场交易的清算、结算处理及资金划转对接</span><span data-en style="display:none">Trade clearing, settlement processing, and fund transfer coordination for Reservoir market transactions</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">📋</div>
+          <div>
+            <div class="svc-name"><span data-zh>日常对账与报表</span><span data-en style="display:none">Reconciliation &amp; Reporting</span></div>
+            <div class="svc-desc"><span data-zh>链上链下数据核对、交易台账维护、定期财务报表生成</span><span data-en style="display:none">On-chain / off-chain data reconciliation, transaction ledger maintenance, and periodic financial report generation</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🛡️</div>
+          <div>
+            <div class="svc-name"><span data-zh>合规与监管支持</span><span data-en style="display:none">Compliance &amp; Regulatory Support</span></div>
+            <div class="svc-desc"><span data-zh>协助准备监管报告、KYC/AML 数据维护及信息披露管理</span><span data-en style="display:none">Regulatory report preparation, KYC/AML data maintenance, and disclosure management</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">👥</div>
+          <div>
+            <div class="svc-name"><span data-zh>投资者服务支持</span><span data-en style="display:none">Investor Services</span></div>
+            <div class="svc-desc"><span data-zh>投资者查询处理、持仓证明出具、公告及信息披露发布</span><span data-en style="display:none">Investor query handling, holding confirmations, announcements, and information disclosure management</span></div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">⚙️</div>
+          <div>
+            <div class="svc-name"><span data-zh>平台技术维护</span><span data-en style="display:none">Platform Technical Maintenance</span></div>
+            <div class="svc-desc"><span data-zh>系统升级、安全补丁、性能监控及故障响应（SLA 保障）</span><span data-en style="display:none">System upgrades, security patches, performance monitoring, and incident response under SLA</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">
+        💰 <span data-zh>收费结构（建议定价）</span><span data-en style="display:none">Fee Structure (Indicative Pricing)</span>
+      </div>
+      <table class="pricing-table">
+        <tr>
+          <td class="pt-icon">🔑</td>
+          <td class="pt-label"><span data-zh>永久授权费</span><span data-en style="display:none">Perpetual Licence Fee</span></td>
+          <td class="pt-value">HKD <span data-zh>1,200 万</span><span data-en style="display:none">12M</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">🚀</td>
+          <td class="pt-label"><span data-zh>运营起始费</span><span data-en style="display:none">Onboarding Fee</span></td>
+          <td class="pt-value">HKD <span data-zh>150–200 万</span><span data-en style="display:none">1.5M – 2M</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📅</td>
+          <td class="pt-label"><span data-zh>年度运营支持费</span><span data-en style="display:none">Annual Support Fee</span></td>
+          <td class="pt-value">HKD <span data-zh>100–150 万 / 年</span><span data-en style="display:none">1M – 1.5M / year</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📊</td>
+          <td class="pt-label"><span data-zh>平台收入分成</span><span data-en style="display:none">Platform Revenue Share</span></td>
+          <td class="pt-value">20%<span data-zh>（与年度费取高）</span><span data-en style="display:none"> (vs. Annual Fee, higher applies)</span></td>
+        </tr>
+      </table>
+      <div class="pricing-note">
+        <span data-zh>✦ 年度运营支持费与平台收入分成（20%）<span class="hl">取较高者</span>收取。<br/>✦ 永久授权费为一次性费用，客户取得平台永久使用权。</span>
+        <span data-en style="display:none">✦ The Annual Support Fee and 20% revenue share are charged on a <span class="hl">whichever is higher</span> basis.<br/>✦ The Perpetual Licence Fee is a one-time payment granting indefinite platform usage rights.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="comparison">
+    <div class="cmp-title">
+      <span data-zh>▸ 两种模式对比一览</span>
+      <span data-en style="display:none">▸ Side-by-Side Comparison</span>
+    </div>
+    <div class="cmp-grid">
+      <div class="cmp-cell hdr dim">
+        <span data-zh>对比维度</span><span data-en style="display:none">Dimension</span>
+      </div>
+      <div class="cmp-cell hdr blue">
+        <span data-zh>模式一 · 代码移交</span><span data-en style="display:none">Model One · Code Transfer</span>
+      </div>
+      <div class="cmp-cell hdr green">
+        <span data-zh>模式二 · 持续运营</span><span data-en style="display:none">Model Two · Managed Operations</span>
+      </div>
+
+      <div class="cmp-cell label">
+        <span data-zh>技术所有权</span><span data-en style="display:none">Technology Ownership</span>
+      </div>
+      <div class="cmp-cell blue-bg">
+        <span data-zh>客户完全持有</span><span data-en style="display:none">Client holds full ownership</span>
+      </div>
+      <div class="cmp-cell green-bg">
+        <span data-zh>NVT 授权使用</span><span data-en style="display:none">Licensed use via NVT</span>
+      </div>
+
+      <div class="cmp-cell label">
+        <span data-zh>运营责任</span><span data-en style="display:none">Operational Responsibility</span>
+      </div>
+      <div class="cmp-cell blue-bg">
+        <span data-zh>客户自主运营</span><span data-en style="display:none">Client self-operates</span>
+      </div>
+      <div class="cmp-cell green-bg">
+        <span data-zh>NVT 全程托管</span><span data-en style="display:none">Fully managed by NVT</span>
+      </div>
+
+      <div class="cmp-cell label">
+        <span data-zh>前期投入</span><span data-en style="display:none">Upfront Investment</span>
+      </div>
+      <div class="cmp-cell blue-bg">
+        <span data-zh>代码费 + 咨询费</span><span data-en style="display:none">Code fee + advisory fee</span>
+      </div>
+      <div class="cmp-cell green-bg">
+        <span data-zh>授权费 + 起始费</span><span data-en style="display:none">Licence fee + onboarding fee</span>
+      </div>
+
+      <div class="cmp-cell label">
+        <span data-zh>持续费用</span><span data-en style="display:none">Ongoing Costs</span>
+      </div>
+      <div class="cmp-cell blue-bg">
+        <span data-zh>仅收入分成 10%</span><span data-en style="display:none">Revenue share only (10%)</span>
+      </div>
+      <div class="cmp-cell green-bg">
+        <span data-zh>年度费 + 分成 20%（取高）</span><span data-en style="display:none">Annual fee + revenue share 20% (higher)</span>
+      </div>
+
+      <div class="cmp-cell label last">
+        <span data-zh>适合客户</span><span data-en style="display:none">Best Suited For</span>
+      </div>
+      <div class="cmp-cell blue-bg last">
+        <span data-zh>具备技术团队，希望掌控平台</span><span data-en style="display:none">Institutions with in-house tech teams seeking full platform control</span>
+      </div>
+      <div class="cmp-cell green-bg last">
+        <span data-zh>专注业务，外包运营后台</span><span data-en style="display:none">Business-focused clients preferring to outsource back-office operations</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">NVT</div>
+    <div class="footer-tagline">RWA Infrastructure Provider</div>
+  </div>
+  <div class="footer-contact">
+    <span data-zh>商务咨询请联系 NVT 团队</span>
+    <span data-en style="display:none">For business enquiries, please contact the NVT team</span>
+    &nbsp;·&nbsp; <a href="mailto:nvtech@newvisiongp.com">nvtech@newvisiongp.com</a>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('[data-zh]').forEach(function(el) {
+    el.style.display = lang === 'zh' ? '' : 'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    el.style.display = lang === 'en' ? '' : 'none';
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+  document.title = lang === 'zh'
+    ? 'NVT Bundle — RWA 融资平台服务方案'
+    : 'NVT Bundle — RWA Financing Platform Solutions';
+}
+
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang');
+  if (lang === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

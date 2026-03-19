@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NVT Bundle — RWA 融资平台服务方案</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', Arial, sans-serif;
+    background: #0C0C0C;
+    color: #AAAAAA;
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    font-size: clamp(16px, 1.1vw, 18px);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #0C0C0C;
+    border-bottom: 1px solid #2A2A2A;
+    padding: 28px clamp(20px, 2.2vw, 40px) 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(14px, 1.4vw, 22px);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,160,77,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #D4A04D;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  h1 {
+    font-size: clamp(34px, 3.2vw, 46px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  h1 span {
+    background: linear-gradient(135deg, #E8C88A, #D4A04D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .tagline {
+    margin-top: 5px;
+    font-size: clamp(14px, 1.15vw, 16px);
+    color: #767676;
+    max-width: 68ch;
+  }
+  .header-badges { display: flex; gap: 14px; }
+  .badge {
+    background: #1C1C1C;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 10px 22px;
+    text-align: center;
+  }
+  .badge-label { font-size: 10px; color: #666666; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .badge-value { font-size: 17px; font-weight: 700; color: #E0B56A; }
+
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    padding: 22px clamp(20px, 2.2vw, 40px) 26px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: clamp(16px, 1.6vw, 26px);
+    overflow: visible;
+  }
+
+  /* ── MODE CARD ── */
+  .mode-card {
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .mode-header {
+    padding: 18px 20px 14px;
+    flex-shrink: 0;
+  }
+  .mode-1 .mode-header {
+    border-bottom: 1px solid #3D2E15;
+    background: linear-gradient(135deg, rgba(212,160,77,0.08) 0%, transparent 100%);
+  }
+  .mode-2 .mode-header {
+    border-bottom: 1px solid #15332A;
+    background: linear-gradient(135deg, rgba(77,168,138,0.08) 0%, transparent 100%);
+  }
+  .mode-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .mode-1 .mode-tag { background: #3D2E15; color: #E0B56A; }
+  .mode-2 .mode-tag { background: #15332A; color: #6BBFA4; }
+  .mode-title { font-size: clamp(18px, 1.55vw, 22px); font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .mode-subtitle { font-size: clamp(14px, 1.2vw, 16px); color: #8F8F8F; line-height: 1.8; font-weight: 600; text-shadow: 0 1px 0 rgba(0,0,0,0.6); }
+
+  .mode-body {
+    padding: 16px 20px 18px;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 7px;
+    margin-top: 12px;
+    flex-shrink: 0;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── SERVICE ITEMS ── */
+  .service-list { display: flex; flex-direction: column; gap: 5px; }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #181818;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .svc-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .mode-1 .svc-icon { background: #3D2E15; }
+  .mode-2 .svc-icon { background: #15332A; }
+  .svc-name { font-size: clamp(14px, 1.05vw, 16px); font-weight: 600; color: #FFFFFF; margin-bottom: 3px; }
+  .svc-desc { font-size: clamp(13px, 1.0vw, 15px); color: #767676; line-height: 1.65; text-shadow: 0 1px 0 rgba(0,0,0,0.55); }
+
+  /* ── FLOW ── */
+  .flow { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+  .flow-step {
+    background: #181818;
+    border: 1px solid #222222;
+    border-radius: 7px;
+    padding: 6px 8px;
+    font-size: 13px;
+    color: #AAAAAA;
+    text-align: center;
+    flex: 1;
+    line-height: 1.35;
+  }
+  .step-num { font-size: 9px; color: #D4A04D; font-weight: 700; }
+  .flow-arrow { color: #444444; font-size: 14px; flex-shrink: 0; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: #222222; margin: 10px 0; flex-shrink: 0; }
+
+  /* ── PRICING TABLE ── */
+  .pricing-table { width: 100%; border-collapse: collapse; }
+  .pricing-table tr { border-bottom: 1px solid #222222; }
+  .pricing-table tr:last-child { border-bottom: none; }
+  .pricing-table td { padding: 7px 3px; font-size: 13px; vertical-align: middle; }
+  .pt-icon { width: 24px; font-size: 13px; text-align: center; padding-right: 6px; }
+  .pt-label { color: #AAAAAA; }
+  .pt-value { color: #fff; font-weight: 600; text-align: right; white-space: nowrap; }
+  .mode-1 .pt-value { color: #E0B56A; }
+  .mode-2 .pt-value { color: #6BBFA4; }
+  .pt-sub { font-size: 11px; color: #5A5A5A; display: block; margin-top: 2px; }
+
+  .pricing-note {
+    font-size: 13px;
+    color: #767676;
+    margin-top: 8px;
+    line-height: 1.65;
+    padding: 10px 12px;
+    background: #181818;
+    border-radius: 7px;
+    border-left: 3px solid #2A2A2A;
+    flex-shrink: 0;
+  }
+
+  /* ── COMPARISON ── */
+  .comparison {
+    grid-column: 1 / -1;
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .cmp-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #AAAAAA;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .cmp-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr;
+    flex: 1;
+  }
+  .cmp-cell {
+    padding: 7px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid #1C1C1C;
+    display: flex;
+    align-items: center;
+  }
+  .cmp-cell.label { color: #767676; font-size: 11.5px; }
+  .cmp-cell.hdr {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #2A2A2A;
+    padding-bottom: 8px;
+    align-items: flex-end;
+  }
+  .cmp-cell.hdr.dim { color: #444444; }
+  .cmp-cell.hdr.blue { color: #E0B56A; background: rgba(212,160,77,0.06); border-radius: 7px 7px 0 0; }
+  .cmp-cell.hdr.green { color: #6BBFA4; background: rgba(77,168,138,0.06); border-radius: 7px 7px 0 0; }
+  .cmp-cell.blue-bg { background: rgba(212,160,77,0.04); color: #E8C88A; }
+  .cmp-cell.green-bg { background: rgba(77,168,138,0.04); color: #8AD4BA; }
+  .cmp-cell.last { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #0C0C0C;
+    border-top: 1px solid #2A2A2A;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 12px;
+  }
+  .footer-brand { font-size: 16px; font-weight: 700; color: #D4A04D; }
+  .footer-tagline { font-size: 10px; color: #444444; margin-top: 2px; }
+  .footer-contact { font-size: 11px; color: #767676; text-align: right; line-height: 1.7; }
+  .footer-contact a { color: #E0B56A; text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 980px) {
+    .page { max-width: 980px; }
+    .main { grid-template-columns: 1fr; }
+    .header { padding: 24px 18px 18px; }
+    .main { padding: 18px 18px 22px; }
+    .footer { padding: 16px 18px; flex-direction: column; align-items: flex-start; }
+    .footer-contact { text-align: left; }
+  }
+
+  @media (max-width: 640px) {
+    .header-badges { display: none; }
+    .flow { flex-wrap: wrap; gap: 8px; }
+    .flow-arrow { display: none; }
+    .flow-step { flex: 1 1 calc(50% - 8px); }
+    .comparison { padding: 14px 14px; }
+    .cmp-grid { grid-template-columns: 1fr; }
+    .cmp-cell.hdr.dim { display: none; }
+    .cmp-cell.label { font-weight: 700; padding-top: 12px; }
+    .cmp-cell.hdr.blue, .cmp-cell.hdr.green { border-radius: 8px; margin-bottom: 2px; }
+  }
+
+  /* ── PRINT (PDF) ── */
+  @media print {
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { overflow: visible; }
+    .mode-card, .comparison { break-inside: avoid; page-break-inside: avoid; box-shadow: none; }
+    .header, .footer { position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="brand">NVT · Product &amp; Services</div>
+    <h1>NVT <span>Bundle</span></h1>
+    <div class="tagline">端到端 RWA 融资平台解决方案 · 两种合作模式，灵活适配不同机构需求</div>
+  </div>
+  <div class="header-badges">
+    <div class="badge">
+      <div class="badge-label">核心平台</div>
+      <div class="badge-value">🏗️ RWA 代币化</div>
+    </div>
+    <div class="badge">
+      <div class="badge-label">交易市场</div>
+      <div class="badge-value">📊 Reservoir</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- MODE 1 -->
+  <div class="mode-card mode-1">
+    <div class="mode-header">
+      <div class="mode-tag">模式一</div>
+      <div class="mode-title">代码移交 · 自主运营</div>
+      <div class="mode-subtitle">NVT 交付完整平台代码，客户取得技术所有权后独立运营；NVT 在首次发行提供咨询陪跑。</div>
+    </div>
+    <div class="mode-body">
+      <div class="section-label">📦 交付内容</div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="svc-icon">🔗</div>
+          <div><div class="svc-name">RWA 代币化系统</div><div class="svc-desc">完整源代码移交，含资产上链、代币发行、权益管理模块</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">📈</div>
+          <div><div class="svc-name">Reservoir 二级交易市场</div><div class="svc-desc">代币化资产流通交易平台，含订单撮合与结算接口</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🎯</div>
+          <div><div class="svc-name">首次发行咨询服务</div><div class="svc-desc">结构设计、合规建议、发行流程辅导，覆盖首个 RWA 资产上线全程</div></div>
+        </div>
+      </div>
+
+      <div class="section-label">🔄 合作流程</div>
+      <div class="flow">
+        <div class="flow-step"><div class="step-num">01</div>代码移交</div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="step-num">02</div>首次发行<br/>咨询陪跑</div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="step-num">03</div>客户<br/>独立运营</div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step"><div class="step-num">04</div>NVT<br/>收取分成</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">💰 收费结构（参考定价）</div>
+      <table class="pricing-table">
+        <tr>
+          <td class="pt-icon">📦</td>
+          <td class="pt-label">代码移交费</td>
+          <td class="pt-value">HKD 1,000 万<span class="pt-sub">标价 1,200 万，可协商</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">🎯</td>
+          <td class="pt-label">咨询服务费</td>
+          <td class="pt-value">HKD 300 万<span class="pt-sub">折后约 200 万</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📊</td>
+          <td class="pt-label">平台收入分成</td>
+          <td class="pt-value">10%</td>
+        </tr>
+      </table>
+      <div class="pricing-note">
+        ✦ 代码移交费为一次性买断，客户取得完整技术所有权。<br/>
+        ✦ 实际报价视客户规模与需求调整。
+      </div>
+    </div>
+  </div>
+
+  <!-- MODE 2 -->
+  <div class="mode-card mode-2">
+    <div class="mode-header">
+      <div class="mode-tag">模式二</div>
+      <div class="mode-title">平台部署 · 持续运营支持</div>
+      <div class="mode-subtitle">NVT 负责平台部署并提供长期运营服务，客户专注业务拓展，后台运营全权委托 NVT 处理。</div>
+    </div>
+    <div class="mode-body">
+      <div class="section-label">🛠️ 服务内容</div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="svc-icon">🏗️</div>
+          <div><div class="svc-name">平台定制化部署</div><div class="svc-desc">完整 RWA 融资平台的环境搭建、配置与上线，含代币化系统及 Reservoir 市场</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🔄</div>
+          <div><div class="svc-name">代币生命周期管理</div><div class="svc-desc">发行、锁定期管理、分红 / 利息分配、到期赎回的全流程链上维护</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">⚖️</div>
+          <div><div class="svc-name">二级市场清结算</div><div class="svc-desc">Reservoir 市场交易的清算、结算处理及资金划转对接</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">📋</div>
+          <div><div class="svc-name">日常对账与报表</div><div class="svc-desc">链上链下数据核对、交易台账维护、定期财务报表生成</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">🛡️</div>
+          <div><div class="svc-name">合规与监管支持</div><div class="svc-desc">协助准备监管报告、KYC/AML 数据维护及信息披露管理</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">👥</div>
+          <div><div class="svc-name">投资者服务支持</div><div class="svc-desc">投资者查询处理、持仓证明出具、公告及信息披露发布</div></div>
+        </div>
+        <div class="service-item">
+          <div class="svc-icon">⚙️</div>
+          <div><div class="svc-name">平台技术维护</div><div class="svc-desc">系统升级、安全补丁、性能监控及故障响应（SLA 保障）</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label">💰 收费结构（建议定价）</div>
+      <table class="pricing-table">
+        <tr>
+          <td class="pt-icon">🔑</td>
+          <td class="pt-label">永久授权费</td>
+          <td class="pt-value">HKD 1,200 万<span class="pt-sub">标价，可协商至 1,000 万</span></td>
+        </tr>
+        <tr>
+          <td class="pt-icon">🚀</td>
+          <td class="pt-label">运营起始费</td>
+          <td class="pt-value">HKD 150–200 万</td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📅</td>
+          <td class="pt-label">年度运营支持费</td>
+          <td class="pt-value">HKD 100–150 万 / 年</td>
+        </tr>
+        <tr>
+          <td class="pt-icon">📊</td>
+          <td class="pt-label">平台收入分成</td>
+          <td class="pt-value">20%（与年度费取高）</td>
+        </tr>
+      </table>
+      <div class="pricing-note">
+        ✦ 年度运营支持费与平台收入分成（20%）<strong style="color:#6BBFA4;">取较高者</strong>收取。<br/>
+        ✦ 永久授权费为一次性费用，客户取得平台永久使用权。
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="comparison">
+    <div class="cmp-title">▸ 两种模式对比一览</div>
+    <div class="cmp-grid">
+      <div class="cmp-cell hdr dim">对比维度</div>
+      <div class="cmp-cell hdr blue">模式一 · 代码移交</div>
+      <div class="cmp-cell hdr green">模式二 · 持续运营</div>
+
+      <div class="cmp-cell label">技术所有权</div>
+      <div class="cmp-cell blue-bg">客户完全持有</div>
+      <div class="cmp-cell green-bg">NVT 授权使用</div>
+
+      <div class="cmp-cell label">运营责任</div>
+      <div class="cmp-cell blue-bg">客户自主运营</div>
+      <div class="cmp-cell green-bg">NVT 全程托管</div>
+
+      <div class="cmp-cell label">前期投入</div>
+      <div class="cmp-cell blue-bg">代码费 + 咨询费</div>
+      <div class="cmp-cell green-bg">授权费 + 起始费</div>
+
+      <div class="cmp-cell label">持续费用</div>
+      <div class="cmp-cell blue-bg">仅收入分成 10%</div>
+      <div class="cmp-cell green-bg">年度费 + 分成 20%（取高）</div>
+
+      <div class="cmp-cell label last">适合客户</div>
+      <div class="cmp-cell blue-bg last">具备技术团队，希望掌控平台</div>
+      <div class="cmp-cell green-bg last">专注业务，外包运营后台</div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">NVT</div>
+    <div class="footer-tagline">Next Vision Technology · RWA Infrastructure Provider</div>
+  </div>
+  <div class="footer-contact">
+    商务咨询请联系 NVT 团队 &nbsp;·&nbsp; <a href="#">business@nvt.io</a>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
