@@ -1,5 +1,8 @@
 {
   "rewrites": [
+    { "source": "/rise", "destination": "/rise.html" },
+    { "source": "/rise/en", "destination": "/rise.html" },
+    { "source": "/rise/zh", "destination": "/rise.html" },
     { "source": "/en", "destination": "/index.html?lang=en" },
     { "source": "/zh", "destination": "/index.html?lang=zh" }
   ],

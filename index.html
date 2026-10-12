@@ -122,6 +122,11 @@
   }
 
   .header-badges { display: flex; gap: 12px; }
+  .header-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .rise-link { color: var(--teal-300); text-decoration: none; font-size: 13px; font-weight: 600; }
+  .rise-link:hover { text-decoration: underline; }
+  .rise-link:focus-visible { outline: 2px solid var(--teal-300); outline-offset: 4px; }
+  .mode-rise-link { display: inline-block; margin-top: 14px; }
   .badge {
     background: var(--bg-elevated);
     border: 1px solid var(--border);
@@ -533,9 +538,12 @@
         <div class="badge-value">📊 Reservoir</div>
       </div>
     </div>
-    <div class="lang-toggle">
-      <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
-      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <div class="header-actions">
+      <a class="rise-link" data-rise-link href="/rise">NVT RISE ↗</a>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
+        <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
     </div>
   </div>
 </div>
@@ -654,6 +662,9 @@
         <span data-zh style="display:none">NVT 负责平台部署并提供长期运营服务，客户专注业务拓展，后台运营全权委托 NVT 处理。</span>
         <span data-en>NVT deploys the platform and provides ongoing operational support. The client focuses on business development while NVT manages all back-office functions.</span>
       </div>
+      <a class="rise-link mode-rise-link" data-rise-link href="/rise">
+        <span data-zh style="display:none">探索 NVT RISE · 结构化销售激励 ↗</span><span data-en>Explore NVT RISE · Structured sales incentives ↗</span>
+      </a>
     </div>
     <div class="mode-body">
       <div class="section-label">
@@ -843,6 +854,9 @@ function switchLang(lang) {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
   document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+  document.querySelectorAll('[data-rise-link]').forEach(function(link) {
+    link.href = lang === 'zh' ? '/rise/zh' : '/rise';
+  });
   document.title = lang === 'zh'
     ? 'NVT Bundle — RWA 融资平台服务方案'
     : 'NVT Bundle — RWA Financing Platform Solutions';
