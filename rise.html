@@ -160,19 +160,10 @@
   .pricing-intro p { font-size: 14px; }
   .pricing-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 28px; }
   .pricing-plan { padding: 26px; border: 1px solid #3B4740; border-radius: 10px; background: #121814; }
-  .pricing-plan.preferred { background: #14271F; border: 2px solid var(--teal); padding: 25px; }
   .plan-heading { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .plan-heading h3 { font-size: 21px; }
-  .recommended { font-size: 11px; font-weight: 700; background: var(--teal); color: #0C231B; border-radius: 4px; padding: 3px 8px; }
   .plan-summary { font-size: 13px; color: var(--muted); margin-top: 9px; }
-  .plan-savings { border-top: 1px solid #3F6553; margin-top: 12px; padding-top: 18px; }
-  .plan-savings > p { color: var(--teal); font-size: 12px; font-weight: 600; }
-  .savings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 12px; }
-  .savings-stat { color: var(--muted); font-size: 12px; }
-  .savings-stat strong { display: block; color: var(--teal); font-size: 23px; line-height: 1.4; margin: 4px 0; }
-  .savings-stat small { display: block; color: var(--text); font-size: 11px; }
   .plan-price { font-size: 36px; line-height: 1.2; font-weight: 700; color: var(--text); margin-top: 22px; letter-spacing: -.04em; }
-  .preferred .plan-price { color: var(--teal); }
   .plan-price small { display: block; margin-top: 7px; font-size: 12px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
   .pricing-plan dl { margin-top: 22px; }
   .pricing-plan dl > div { border-top: 1px solid #304238; padding: 14px 0; }
@@ -191,18 +182,15 @@
   .cost-comparison h3 { font-size: 21px; }
   .cost-comparison > p { color: var(--muted); font-size: 12px; margin-top: 7px; }
   .cost-table-scroll { overflow-x: auto; margin-top: 18px; }
-  .cost-table { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 14px; }
+  .cost-table { width: 100%; border-collapse: collapse; min-width: 460px; font-size: 14px; }
   .cost-table th, .cost-table td { text-align: left; padding: 15px 12px; border-bottom: 1px solid #34483B; vertical-align: middle; }
   .cost-table thead th { font-size: 12px; color: var(--muted); font-weight: 500; }
-  .cost-table .standard-cost { color: var(--teal); font-size: 23px; font-weight: 700; }
-  .cost-table .saving { color: var(--teal); font-size: 21px; font-weight: 700; }
-  .cost-table .saving small { display: block; font-size: 12px; font-weight: 400; margin-top: 2px; }
+  .cost-table .fee-total { color: var(--text); font-size: 23px; font-weight: 600; }
   .pricing .pricing-note { line-height: 1.75; }
   @media (max-width: 900px) { .pricing-plans { grid-template-columns: 1fr; } }
   @media (max-width: 540px) {
     .pricing { padding: 24px 16px; }
     .pricing-plan { padding: 21px; }
-    .pricing-plan.preferred { padding: 20px; }
     .plan-price { font-size: 32px; }
     .commitment-option .annual-price { font-size: 21px; }
     .cost-table th, .cost-table td { padding: 12px 9px; }
@@ -277,56 +265,49 @@
     <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
       <div class="pricing-intro">
         <p class="eyebrow"><span data-en>RISE pricing</span><span data-zh>RISE 收费方案</span></p>
-        <h2 id="pricing-heading"><span data-en>An upfront investment. Lower long-term costs.</span><span data-zh>一次启动投入，降低长期总成本。</span></h2>
-        <p><span data-en>Choose standard activation for lower ongoing fees, or preserve initial cash with zero upfront fees and a three- or five-year minimum commitment. Both plans cover the agreed RISE programme scope.</span><span data-zh>标准启动方案以一次性投入换取较低持续费率。零 upfront 方案保留初期现金，相应承担三年或五年的最低合作承诺。两种方案均按约定的 RISE 项目范围提供服务。</span></p>
+        <h2 id="pricing-heading"><span data-en>RISE pricing quotation</span><span data-zh>RISE 收费方案报价</span></h2>
+        <p><span data-en>Two fee structures for the agreed RISE programme. Startup payments, recurring fees and minimum service commitments depend on the selected plan.</span><span data-zh>以下为 RISE 项目的两种收费方式。启动付款、持续收费及最低合作期按所选方案确定。</span></p>
       </div>
       <div class="pricing-plans">
-        <article class="pricing-plan preferred" aria-labelledby="standard-plan-heading">
-          <div class="plan-heading"><h3 id="standard-plan-heading"><span data-en>Standard activation</span><span data-zh>标准启动方案</span></h3><span class="recommended"><span data-en>Recommended</span><span data-zh>推荐</span></span></div>
-          <p class="plan-summary"><span data-en>Lower ongoing fees and lower total costs over the same period.</span><span data-zh>较低持续费率，同期累计费用更低。</span></p>
+        <article class="pricing-plan" aria-labelledby="standard-plan-heading">
+          <div class="plan-heading"><h3 id="standard-plan-heading"><span data-en>Standard activation</span><span data-zh>标准启动方案</span></h3></div>
+          <p class="plan-summary"><span data-en>One-time licence and onboarding payment, followed by annual support fees from Year 2.</span><span data-zh>一次性支付授权及运营接入费用，第二年起收取年度服务费。</span></p>
           <p class="plan-price">HKD 18M<small><span data-en>Year 1 total, paid upfront</span><span data-zh>第一年合计，启动时支付</span></small></p>
           <dl>
             <div><dt><span data-en>Year 1 breakdown</span><span data-zh>第一年费用构成</span></dt><dd><span data-en>HKD 10M perpetual licence + HKD 8M onboarding.</span><span data-zh>HKD 10M 永久授权费＋HKD 8M 运营接入费。</span></dd></div>
             <div><dt><span data-en>From Year 2 onwards</span><span data-zh>自第二年起</span></dt><dd><strong><span data-en>HKD 10M per year or 25% of annual platform revenue, whichever is higher.</span><span data-zh>每年 HKD 10M，或当年平台收入的 25%，取较高者。</span></strong></dd></div>
             <div><dt><span data-en>Licence and service term</span><span data-zh>授权及服务期限</span></dt><dd><span data-en>The one-time licence grants perpetual platform usage rights. Ongoing services follow the standard service agreement.</span><span data-zh>一次性授权费对应平台永久使用权，持续服务期限按标准服务协议约定。</span></dd></div>
           </dl>
-          <div class="plan-savings">
-            <p><span data-en>Save with standard activation</span><span data-zh>选择标准方案，节省长期支出</span></p>
-            <div class="savings-grid">
-              <p class="savings-stat"><span data-en>3-year minimum total</span><span data-zh>三年最低累计</span><strong>HKD 38M</strong><small><span data-en>Save HKD 16M (29.6%)</span><span data-zh>节省 HKD 16M（29.6%）</span></small></p>
-              <p class="savings-stat"><span data-en>5-year minimum total</span><span data-zh>五年最低累计</span><strong>HKD 58M</strong><small><span data-en>Save HKD 22M (27.5%)</span><span data-zh>节省 HKD 22M（27.5%）</span></small></p>
-            </div>
-            <p class="fee-detail"><span data-en>Compared with the corresponding zero-upfront plan, using fixed minimum fees.</span><span data-zh>按固定最低收费，与对应零 upfront 方案比较。</span></p>
-          </div>
+
         </article>
         <article class="pricing-plan" aria-labelledby="zero-plan-heading">
           <div class="plan-heading"><h3 id="zero-plan-heading"><span data-en>Zero upfront, long-term commitment</span><span data-zh>零 upfront 长期合作方案</span></h3></div>
-          <p class="plan-summary"><span data-en>Preserve initial cash with higher recurring fees and a minimum payment commitment.</span><span data-zh>保留初期现金，承担较高持续费率及最低付款承诺。</span></p>
+          <p class="plan-summary"><span data-en>Licence and onboarding costs are included in recurring fees, with a minimum service term.</span><span data-zh>授权及接入成本纳入持续收费，并约定最低合作期。</span></p>
           <p class="plan-price">HKD 0<small><span data-en>No one-time licence or onboarding payment. Recurring fees apply from Year 1.</span><span data-zh>无需单独支付一次性授权及接入费用，持续费用自第一年起收取。</span></small></p>
           <div class="commitment-options">
             <div class="commitment-option"><h4><span data-en>3-year minimum term</span><span data-zh>最低合作期三年</span></h4><p class="annual-price">HKD 18M <small><span data-en>/ year</span><span data-zh>／年</span></small></p><p><span data-en>Minimum payment commitment</span><span data-zh>最低付款承诺</span><strong>HKD 54M</strong></p></div>
             <div class="commitment-option"><h4><span data-en>5-year minimum term</span><span data-zh>最低合作期五年</span></h4><p class="annual-price">HKD 16M <small><span data-en>/ year</span><span data-zh>／年</span></small></p><p><span data-en>Minimum payment commitment</span><span data-zh>最低付款承诺</span><strong>HKD 80M</strong></p></div>
           </div>
           <dl>
-            <div><dt><span data-en>Annual fee from Year 1</span><span data-zh>自第一年起的年度收费</span></dt><dd><span data-en>The selected annual fee above or <strong>35% of annual platform revenue</strong>, whichever is higher. Licence and onboarding costs are included in the recurring fees.</span><span data-zh>所选方案的上述年费，或<strong>当年平台收入的 35%</strong>，取较高者。授权及接入成本已纳入持续收费。</span></dd></div>
+            <div><dt><span data-en>Annual fee from Year 1</span><span data-zh>自第一年起的年度收费</span></dt><dd><span data-en>The selected annual fee above or <strong>25% of annual platform revenue</strong>, whichever is higher. Licence and onboarding costs are included in the recurring fees.</span><span data-zh>所选方案的上述年费，或<strong>当年平台收入的 25%</strong>，取较高者。授权及接入成本已纳入持续收费。</span></dd></div>
             <div><dt><span data-en>Payment schedule</span><span data-zh>付款安排</span></dt><dd><span data-en>Pay the annual fee quarterly. Reconcile the revenue share annually and pay any excess over the fixed annual fee.</span><span data-zh>固定年费按季度支付，收入分成按年度核算，并补足超过固定年费的差额。</span></dd></div>
           </dl>
           <p class="commitment-note"><span data-en><strong>A binding 3- or 5-year minimum payment commitment.</strong> Early termination does not waive the agreed minimum payment obligation. Settlement terms are specified in the service agreement.</span><span data-zh><strong>签约时确定三年或五年的最低付款承诺。</strong>提前终止不免除约定的最低付款义务，具体结算方式在服务协议中明确。</span></p>
         </article>
       </div>
       <div class="cost-comparison" aria-labelledby="cost-comparison-heading">
-        <h3 id="cost-comparison-heading"><span data-en>Standard activation: clear savings over the same term</span><span data-zh>标准启动方案：同期总成本优势清晰可见</span></h3>
-        <p><span data-en>Minimum-fee comparison. All amounts in HKD millions.</span><span data-zh>按固定最低收费比较，金额单位为百万港元。</span></p>
+        <h3 id="cost-comparison-heading"><span data-en>Minimum fees and payment commitments</span><span data-zh>最低累计费用及付款承诺</span></h3>
+        <p><span data-en>All amounts in HKD millions. Totals use fixed minimum annual fees.</span><span data-zh>金额单位为百万港元，累计费用按固定最低年费计算。</span></p>
         <div class="cost-table-scroll" tabindex="0" role="region" aria-labelledby="cost-comparison-heading">
           <table class="cost-table">
-            <thead><tr><th scope="col"><span data-en>Period</span><span data-zh>比较期间</span></th><th scope="col"><span data-en>Standard minimum total</span><span data-zh>标准方案最低累计</span></th><th scope="col"><span data-en>Zero-upfront minimum commitment</span><span data-zh>零 upfront 最低承诺</span></th><th scope="col"><span data-en>Save with standard</span><span data-zh>选择标准方案可节省</span></th></tr></thead>
+            <thead><tr><th scope="col"><span data-en>Period</span><span data-zh>比较期间</span></th><th scope="col"><span data-en>Standard minimum total</span><span data-zh>标准方案最低累计</span></th><th scope="col"><span data-en>Zero-upfront minimum commitment</span><span data-zh>零 upfront 最低承诺</span></th></tr></thead>
             <tbody>
-              <tr><th scope="row"><span data-en>3 years</span><span data-zh>三年</span></th><td class="standard-cost">38M</td><td>54M</td><td class="saving">16M<small><span data-en>29.6% lower</span><span data-zh>降低 29.6%</span></small></td></tr>
-              <tr><th scope="row"><span data-en>5 years</span><span data-zh>五年</span></th><td class="standard-cost">58M</td><td>80M</td><td class="saving">22M<small><span data-en>27.5% lower</span><span data-zh>降低 27.5%</span></small></td></tr>
+              <tr><th scope="row"><span data-en>3 years</span><span data-zh>三年</span></th><td class="fee-total">38M</td><td class="fee-total">54M</td></tr>
+              <tr><th scope="row"><span data-en>5 years</span><span data-zh>五年</span></th><td class="fee-total">58M</td><td class="fee-total">80M</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="pricing-note"><span data-en>Totals assume the fixed minimum fee applies in each year. Savings percentages use the corresponding zero-upfront plan as the comparison base. Actual fees may be higher when the revenue share exceeds the fixed fee. These are nominal totals and exclude the time value of money. Platform revenue follows the definition in the service agreement.</span><span data-zh>以上按各年均适用固定最低收费计算，节省比例以对应零 upfront 方案为比较基准。收入分成超过固定年费时，实际收费相应增加。累计费用为名义金额，未计资金时间价值。平台收入按服务协议约定口径核算。</span></p>
+        <p class="pricing-note"><span data-en>Totals assume the fixed minimum fee applies in each year. Actual fees may be higher when the 25% platform revenue share exceeds the fixed fee. These are nominal totals and exclude the time value of money. Platform revenue follows the definition in the service agreement.</span><span data-zh>以上按各年均适用固定最低收费计算。平台收入的 25% 超过固定年费时，实际收费相应增加。累计费用为名义金额，未计资金时间价值。平台收入按服务协议约定口径核算。</span></p>
       </div>
     </section>
 
