@@ -165,6 +165,12 @@
   .plan-heading h3 { font-size: 21px; }
   .recommended { font-size: 11px; font-weight: 700; background: var(--teal); color: #0C231B; border-radius: 4px; padding: 3px 8px; }
   .plan-summary { font-size: 13px; color: var(--muted); margin-top: 9px; }
+  .plan-savings { border-top: 1px solid #3F6553; margin-top: 12px; padding-top: 18px; }
+  .plan-savings > p { color: var(--teal); font-size: 12px; font-weight: 600; }
+  .savings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 12px; }
+  .savings-stat { color: var(--muted); font-size: 12px; }
+  .savings-stat strong { display: block; color: var(--teal); font-size: 23px; line-height: 1.4; margin: 4px 0; }
+  .savings-stat small { display: block; color: var(--text); font-size: 11px; }
   .plan-price { font-size: 36px; line-height: 1.2; font-weight: 700; color: var(--text); margin-top: 22px; letter-spacing: -.04em; }
   .preferred .plan-price { color: var(--teal); }
   .plan-price small { display: block; margin-top: 7px; font-size: 12px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
@@ -284,6 +290,14 @@
             <div><dt><span data-en>From Year 2 onwards</span><span data-zh>自第二年起</span></dt><dd><strong><span data-en>HKD 10M per year or 25% of annual platform revenue, whichever is higher.</span><span data-zh>每年 HKD 10M，或当年平台收入的 25%，取较高者。</span></strong></dd></div>
             <div><dt><span data-en>Licence and service term</span><span data-zh>授权及服务期限</span></dt><dd><span data-en>The one-time licence grants perpetual platform usage rights. Ongoing services follow the standard service agreement.</span><span data-zh>一次性授权费对应平台永久使用权，持续服务期限按标准服务协议约定。</span></dd></div>
           </dl>
+          <div class="plan-savings">
+            <p><span data-en>Save with standard activation</span><span data-zh>选择标准方案，节省长期支出</span></p>
+            <div class="savings-grid">
+              <p class="savings-stat"><span data-en>3-year minimum total</span><span data-zh>三年最低累计</span><strong>HKD 38M</strong><small><span data-en>Save HKD 16M (29.6%)</span><span data-zh>节省 HKD 16M（29.6%）</span></small></p>
+              <p class="savings-stat"><span data-en>5-year minimum total</span><span data-zh>五年最低累计</span><strong>HKD 58M</strong><small><span data-en>Save HKD 22M (27.5%)</span><span data-zh>节省 HKD 22M（27.5%）</span></small></p>
+            </div>
+            <p class="fee-detail"><span data-en>Compared with the corresponding zero-upfront plan, using fixed minimum fees.</span><span data-zh>按固定最低收费，与对应零 upfront 方案比较。</span></p>
+          </div>
         </article>
         <article class="pricing-plan" aria-labelledby="zero-plan-heading">
           <div class="plan-heading"><h3 id="zero-plan-heading"><span data-en>Zero upfront, long-term commitment</span><span data-zh>零 upfront 长期合作方案</span></h3></div>
